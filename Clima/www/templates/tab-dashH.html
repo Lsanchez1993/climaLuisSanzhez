@@ -1,0 +1,30 @@
+<ion-view view-title="Horas">
+  <ion-nav-bar class="bar bar-header bar-calm">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+  </ion-nav-bar >
+
+  <ion-content class=" backpadding">
+  <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh()">
+  </ion-refresher>
+  <ion-list>
+    <ion-item ng-repeat="item in items"></ion-item>
+  </ion-list>
+
+  <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap">
+        <img ng-src="img/{{chat.weather[0].icon}}.png">
+        <h2>{{chat.dt*1000 | date: 'hh:mm:ss dd/MM/yy'}}</h2>
+    <p>Temperatura: {{weatherToday.temp.day}}</p>
+    <h3>Mínimo: {{chat.temp.min}}</h3>
+    <h3>Máximo: {{chat.temp.max}}</h3>
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>
